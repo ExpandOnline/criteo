@@ -1,0 +1,11 @@
+{
+    "name": "expandonline/criteo",
+    "type": "library",
+    "authors": [
+        {
+            "name": "swordbeta",
+            "email": "mvantricht@expandonline.nl"
+        }
+    ],
+    "require": {}
+}
