@@ -7,6 +7,7 @@
  * please view the LICENSE file that was distributed
  * with this source code.
  */
+
 namespace ExpandOnline\Criteo;
 
 
@@ -19,18 +20,20 @@ namespace ExpandOnline\Criteo;
  * @copyright {copyright}
  * @package   {package}
  */
-class CriteoAdvertiserAPI extends SoapClient
+class CriteoAdvertiserAPI extends \SoapClient
 {
     private static $classmap = array('clientLogin' => 'clientLogin', 'clientLoginResponse' => 'clientLoginResponse', 'partnerLogin' => 'partnerLogin', 'partnerLoginResponse' => 'partnerLoginResponse', 'getAccount' => 'getAccount', 'getAccountResponse' => 'getAccountResponse', 'AdvertiserAccount' => 'AdvertiserAccount', 'apiHeader' => 'apiHeader', 'getCampaigns' => 'getCampaigns', 'CampaignSelectors' => 'CampaignSelectors', 'CampaignStatus' => 'CampaignStatus', 'biddingStrategy' => 'biddingStrategy', 'getCampaignsResponse' => 'getCampaignsResponse', 'campaign' => 'campaign', 'bidInformation' => 'bidInformation', 'CPCBid' => 'CPCBid', 'CPABid' => 'CPABid', 'categoryBid' => 'categoryBid', 'mutateCampaigns' => 'mutateCampaigns', 'campaignMutate' => 'campaignMutate', 'mutate' => 'mutate', 'OperationMutate' => 'OperationMutate', 'mutateCampaignsResponse' => 'mutateCampaignsResponse', 'campaignMutateJobResponse' => 'campaignMutateJobResponse', 'JobResponse' => 'JobResponse', 'JobStatus' => 'JobStatus', 'ApiExceptionData' => 'ApiExceptionData', 'ApiExceptionErrorCode' => 'ApiExceptionErrorCode', 'apiError' => 'apiError', 'ApiErrorCode' => 'ApiErrorCode', 'getCategories' => 'getCategories', 'CategorySelectors' => 'CategorySelectors', 'getCategoriesResponse' => 'getCategoriesResponse', 'category' => 'category', 'mutateCategories' => 'mutateCategories', 'categoryMutate' => 'categoryMutate', 'mutateCategoriesResponse' => 'mutateCategoriesResponse', 'categoryMutateJobResponse' => 'categoryMutateJobResponse', 'getBudgets' => 'getBudgets', 'BudgetSelectors' => 'BudgetSelectors', 'getBudgetsResponse' => 'getBudgetsResponse', 'budget' => 'budget', 'scheduleReportJob' => 'scheduleReportJob', 'ReportJob' => 'ReportJob', 'ReportSelector' => 'ReportSelector', 'ReportType' => 'ReportType', 'AggregationType' => 'AggregationType', 'ReportColumn' => 'ReportColumn', 'scheduleReportJobResponse' => 'scheduleReportJobResponse', 'ReportJobResponse' => 'ReportJobResponse', 'getJobStatus' => 'getJobStatus', 'getJobStatusResponse' => 'getJobStatusResponse', 'getReportDownloadUrl' => 'getReportDownloadUrl', 'getReportDownloadUrlResponse' => 'getReportDownloadUrlResponse', 'getStatisticsLastUpdate' => 'getStatisticsLastUpdate', 'getStatisticsLastUpdateResponse' => 'getStatisticsLastUpdateResponse', 'StatUpdate' => 'StatUpdate', 'StatType' => 'StatType');
-    public function CriteoAdvertiserAPI($wsdl = 'https://advertising.criteo.com/api/v201305/advertiserservice.asmx?wsdl', $options = array())
+
+    public function __construct($wsdl = 'https://advertising.criteo.com/api/v201305/advertiserservice.asmx?wsdl', $options = array())
     {
         foreach (self::$classmap as $key => $value) {
             if (!isset($options['classmap'][$key])) {
-                $options['classmap'][$key] = $value;
+                $options['classmap'][$key] = '\\ExpandOnline\\Criteo\\' . $value;
             }
         }
         parent::__construct($wsdl, $options);
     }
+
     /**
      * Client login is secured by using an application token, along with username and password.
      *
@@ -42,6 +45,7 @@ class CriteoAdvertiserAPI extends SoapClient
     {
         return $this->__soapCall('clientLogin', array($parameters), array('uri' => 'https://advertising.criteo.com/API/v201305', 'soapaction' => ''));
     }
+
     /**
      * Partner login is secured by using an application token, along with username and password.
      *
@@ -53,6 +57,7 @@ class CriteoAdvertiserAPI extends SoapClient
     {
         return $this->__soapCall('partnerLogin', array($parameters), array('uri' => 'https://advertising.criteo.com/API/v201305', 'soapaction' => ''));
     }
+
     /**
      * Returns advertiser account information
      *
@@ -63,6 +68,7 @@ class CriteoAdvertiserAPI extends SoapClient
     {
         return $this->__soapCall('getAccount', array($parameters), array('uri' => 'https://advertising.criteo.com/API/v201305', 'soapaction' => ''));
     }
+
     /**
      * Returns campaign information, including all CPC bids per category for each campaign.
      *
@@ -73,6 +79,7 @@ class CriteoAdvertiserAPI extends SoapClient
     {
         return $this->__soapCall('getCampaigns', array($parameters), array('uri' => 'https://advertising.criteo.com/API/v201305', 'soapaction' => ''));
     }
+
     /**
      * Mutate campaign information. Global CPC per campaign and specific Category Bids can be
      * set.
@@ -84,6 +91,7 @@ class CriteoAdvertiserAPI extends SoapClient
     {
         return $this->__soapCall('mutateCampaigns', array($parameters), array('uri' => 'https://advertising.criteo.com/API/v201305', 'soapaction' => ''));
     }
+
     /**
      * Returns category information. All categories linked to that account are returned.
      *
@@ -94,6 +102,7 @@ class CriteoAdvertiserAPI extends SoapClient
     {
         return $this->__soapCall('getCategories', array($parameters), array('uri' => 'https://advertising.criteo.com/API/v201305', 'soapaction' => ''));
     }
+
     /**
      * Mutate category information. Can only be used to define which categories will be selected
      * for Bidding and Reporting.
@@ -105,6 +114,7 @@ class CriteoAdvertiserAPI extends SoapClient
     {
         return $this->__soapCall('mutateCategories', array($parameters), array('uri' => 'https://advertising.criteo.com/API/v201305', 'soapaction' => ''));
     }
+
     /**
      * Returns buget information.
      *
@@ -115,6 +125,7 @@ class CriteoAdvertiserAPI extends SoapClient
     {
         return $this->__soapCall('getBudgets', array($parameters), array('uri' => 'https://advertising.criteo.com/API/v201305', 'soapaction' => ''));
     }
+
     /**
      * Schedules a statistic report Job.
      *
@@ -125,6 +136,7 @@ class CriteoAdvertiserAPI extends SoapClient
     {
         return $this->__soapCall('scheduleReportJob', array($parameters), array('uri' => 'https://advertising.criteo.com/API/v201305', 'soapaction' => ''));
     }
+
     /**
      * Returns status of a asynchronous job (report or mutate). Currently applies to jobs created
      * for mutateCampaign and scheduleReportJob.
@@ -136,6 +148,7 @@ class CriteoAdvertiserAPI extends SoapClient
     {
         return $this->__soapCall('getJobStatus', array($parameters), array('uri' => 'https://advertising.criteo.com/API/v201305', 'soapaction' => ''));
     }
+
     /**
      * Retrieve reportURL.
      *
@@ -146,6 +159,7 @@ class CriteoAdvertiserAPI extends SoapClient
     {
         return $this->__soapCall('getReportDownloadUrl', array($parameters), array('uri' => 'https://advertising.criteo.com/API/v201305', 'soapaction' => ''));
     }
+
     /**
      * Get statistics last update.
      *
