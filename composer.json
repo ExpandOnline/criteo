@@ -7,5 +7,10 @@
             "email": "mvantricht@expandonline.nl"
         }
     ],
-    "require": {}
+    "require": {},
+    "autoload": {
+        "psr-4": {
+             "ExpandOnline\\": "src/"
+        }
+    }
 }
